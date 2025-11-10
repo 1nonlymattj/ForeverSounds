@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ForeverSounds</title>
+  <link rel="stylesheet" href="resources/css/ForeverSounds.css" />
+  <style>
+    /* Additional home-page tweaks */
+    .container {
+      max-width: 600px;
+      width: 90%;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      letter-spacing: 1px;
+    }
+
+    p {
+      color: #aaa;
+      font-size: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .people-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      justify-content: center;
+    }
+
+    .person-card {
+      background: #1c1c1c;
+      border-radius: 0.8rem;
+      padding: 1rem;
+      box-shadow: 0 6px 12px rgba(255, 255, 255, 0.05);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .person-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 18px rgba(255, 255, 255, 0.08);
+    }
+
+    .person-card a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+
+    footer {
+      margin-top: 3rem;
+      font-size: 0.85rem;
+      color: #666;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>ForeverSounds</h1>
+    <p>Explore unique soundbites from different people.</p>
+
+    <div class="people-list">
+  <div class="person-card">
+    <button onclick="requestAccess('JimMiller')">Jim Miller</button>
+  </div>
+  <!-- Add more as needed -->
+</div>
+
+    <!-- START FOOTER-->
+   <br><br><br>
+  <footer>
+    <div class="footer" align="center">
+      <div class="text-center p-1">
+        <p class="m-0 text-center text-white">
+          <span class="footer-text"> Copyright &copy; </span>
+          <span class="footer-text" id="year"></span> 
+          <span class="footer-text">MJs Creations</span> 
+          <span class="footer-statement">All Rights Reserved</span>
+        </p>
+        <div id="fuzzyWebDesign" class="powered"> 
+          MJsCreations.com is a Fuzzy Web Design LLC creation 
+          <a id="WebDesignInquiry">
+            <img class="powerImage change-my-color" src="resources/img/BlueFuzzyLogo.svg" alt="">
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+    <script>document.getElementById("year").innerHTML = new Date().getFullYear();</script>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script> 
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js"></script>
+    <script src="resources/js/AccessKeys.js"></script>
+    <script src="resources/js/ForeverSoundsAccess.js"></script>
+    <script src="resources/js/Inquiry.js"></script>
+
+  </div>
+</body>
+</html>
