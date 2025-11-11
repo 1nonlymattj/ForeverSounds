@@ -4,35 +4,41 @@ let sounds = [];
 let playedSounds = [];
 let currentAudio;
 
-// Get personKey from sessionStorage
-const personKey = sessionStorage.getItem("personKey");
+// -----------------------------
+// 1️⃣ Get the personKey from the URL
+// -----------------------------
+const urlParams = new URLSearchParams(window.location.search);
+const personKey = urlParams.get("person");
+
 if (!personKey || !accessMap[personKey]) {
-    alert("Person not recognized. Please login first.");
+    alert("Person not found. Please scan a valid QR code or login first.");
     throw new Error("Person not recognized");
 }
 
 const entry = accessMap[personKey];
 
-// Set the display name
-document.getElementById("personName").innerText = entry.displayName;
+// -----------------------------
+// 2️⃣ Set display name
+// -----------------------------
+const personNameEl = document.getElementById("personName");
+if (personNameEl) personNameEl.innerText = entry.displayName;
 
-// ---- Load sounds dynamically from sounds.json ----
-fetch(`${entry.folder}sounds.json`)
-  .then(res => res.json())
-  .then(data => {
-      sounds = data.map(f => entry.folder + f); // prepend folder path
-  })
-  .catch(err => {
-      console.error("Failed to load sounds.json", err);
-});
+// -----------------------------
+// 3️⃣ Load full S3 URLs for all sounds
+// -----------------------------
+sounds = entry.sounds.map(f => entry.bucket + f);
 
-// Get buttons
+// -----------------------------
+// 4️⃣ Get button elements
+// -----------------------------
 const playButton = document.getElementById("playButton");
 const replayButton = document.getElementById("replayButton");
 const nextButton = document.getElementById("nextButton");
 const controls = document.getElementById("controls");
 
-// Pick a random sound that hasn’t been played yet
+// -----------------------------
+// 5️⃣ Pick a random sound that hasn’t been played yet
+// -----------------------------
 function getRandomSound() {
     if (playedSounds.length === sounds.length) playedSounds = [];
     const remaining = sounds.filter(s => !playedSounds.includes(s));
@@ -41,34 +47,64 @@ function getRandomSound() {
     return selected;
 }
 
-// Play a sound
+// -----------------------------
+// 6️⃣ Play a sound
+// -----------------------------
 function playSound(src) {
     if (currentAudio) currentAudio.pause();
     currentAudio = new Audio(src);
 
     currentAudio.onerror = () => console.error("Failed to play:", src);
-    currentAudio.play().catch(err => console.error("Play failed:", err, src));
+    currentAudio.play()
+        .then(() => {
+            // Successfully started playing
+            controls.classList.remove("hidden");
+        })
+        .catch(err => {
+            console.warn("Autoplay blocked by browser. Please press Play.", err);
+            // Show the Play button so user can manually start
+            if (playButton) playButton.style.display = "inline-block";
+        });
 
     currentAudio.onended = () => {
         controls.classList.remove("hidden");
     };
 }
 
-// Event listeners
-playButton.addEventListener("click", () => {
-    const sound = getRandomSound();
-    playSound(sound);
-    playButton.style.display = "none";
-});
+// -----------------------------
+// 7️⃣ Button event listeners
+// -----------------------------
+if (playButton) {
+    playButton.addEventListener("click", () => {
+        const sound = getRandomSound();
+        playSound(sound);
+        playButton.style.display = "none"; // hide after starting
+    });
+}
 
-replayButton.addEventListener("click", () => {
-    if (currentAudio) {
-        currentAudio.currentTime = 0;
-        currentAudio.play();
+if (replayButton) {
+    replayButton.addEventListener("click", () => {
+        if (currentAudio) {
+            currentAudio.currentTime = 0;
+            currentAudio.play();
+        }
+    });
+}
+
+if (nextButton) {
+    nextButton.addEventListener("click", () => {
+        const sound = getRandomSound();
+        playSound(sound);
+    });
+}
+
+// -----------------------------
+// 8️⃣ Auto-play first sound on page load
+// -----------------------------
+window.addEventListener("DOMContentLoaded", () => {
+    if (sounds.length > 0) {
+        const sound = getRandomSound();
+        playSound(sound);
+        if (playButton) playButton.style.display = "none";
     }
-});
-
-nextButton.addEventListener("click", () => {
-    const sound = getRandomSound();
-    playSound(sound);
 });

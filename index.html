@@ -4,21 +4,48 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ForeverSounds</title>
+  <link rel="icon" href="resources/img/Soundwave_2.png" type="image/png"
+            sizes="16x16">
   <link rel="stylesheet" href="resources/css/ForeverSounds.css">
 </head>
 <body>
-  <div class="container">
-    <h1 id="personName"></h1>
-    <div class="waveform"></div>
-    <button id="playButton">Play a Soundbite</button>
-    <div id="controls" class="hidden">
-      <button id="replayButton">Replay</button>
-      <button id="nextButton">Play Another</button>
+  <div class="page-wrapper">
+    <div class="container">
+      <h1 id="personName"></h1>
+      <div class="waveform"></div>
+      <button id="playButton">Play a Message From Your Loved One</button>
+      <div id="controls" class="hidden">
+        <button id="replayButton">Replay</button>
+        <button id="nextButton">Play Another</button>
+      </div>
     </div>
+
+    <footer>
+      <div class="footer" align="center">
+        <div class="text-center p-1">
+          <p class="m-0 text-center text-white">
+            <span class="footer-text"> Copyright &copy; </span>
+            <span class="footer-text" id="year"></span> 
+            <span class="footer-text">MJs Creations</span> 
+            <span class="footer-statement">All Rights Reserved</span>
+          </p>
+          <div id="fuzzyWebDesign" class="powered"> 
+            ForeverSounds.com is a Fuzzy Web Design LLC creation 
+            <a id="WebDesignInquiry">
+              <img class="powerImage change-my-color" src="resources/img/BlueFuzzyLogo.svg" alt="">
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
   </div>
 
-  <script src="resources/js/AccessKeys.js"></script>
-  <script src= "resources/js/ForeverSoundsAccess.js"></script>
-  <script src= "resources/js/ForeverSounds.js"></script>
+    <script>document.getElementById("year").innerHTML = new Date().getFullYear();</script>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script> 
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js"></script>
+    <script src="resources/js/AccessKeys.js"></script>
+  <script src="resources/js/ForeverSoundsAccess.js"></script>
+  <script src="resources/js/ForeverSounds.js"></script>
 </body>
 </html>
