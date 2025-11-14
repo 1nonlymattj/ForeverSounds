@@ -9,6 +9,8 @@ let currentAudio;
 // -----------------------------
 const urlParams = new URLSearchParams(window.location.search);
 const personKey = urlParams.get("person");
+const waveform = document.querySelector(".waveform");
+
 
 if (!personKey || !accessMap[personKey]) {
     alert("Person not found. Please scan a valid QR code or login first.");
@@ -26,7 +28,10 @@ if (personNameEl) personNameEl.innerText = entry.displayName;
 // -----------------------------
 // 3️⃣ Load full S3 URLs for all sounds
 // -----------------------------
-sounds = entry.sounds.map(f => entry.bucket + f);
+sounds = entry.sounds.map(s => ({
+    url: entry.bucket + s.file,
+    text: s.text
+}));
 
 // -----------------------------
 // 4️⃣ Get button elements
@@ -41,34 +46,44 @@ const controls = document.getElementById("controls");
 // -----------------------------
 function getRandomSound() {
     if (playedSounds.length === sounds.length) playedSounds = [];
-    const remaining = sounds.filter(s => !playedSounds.includes(s));
+    const remaining = sounds.filter(s => !playedSounds.includes(s.url));
     const selected = remaining[Math.floor(Math.random() * remaining.length)];
-    playedSounds.push(selected);
+    playedSounds.push(selected.url);
     return selected;
 }
 
 // -----------------------------
 // 6️⃣ Play a sound
 // -----------------------------
-function playSound(src) {
+function playSound(soundObj) {
     if (currentAudio) currentAudio.pause();
-    currentAudio = new Audio(src);
 
-    currentAudio.onerror = () => console.error("Failed to play:", src);
-    currentAudio.play()
-        .then(() => {
-            // Successfully started playing
-            controls.classList.remove("hidden");
-        })
-        .catch(err => {
-            console.warn("Autoplay blocked by browser. Please press Play.", err);
-            // Show the Play button so user can manually start
-            if (playButton) playButton.style.display = "inline-block";
-        });
+    currentAudio = new Audio(soundObj.url);
+
+    // Start animation when playing
+    currentAudio.onplay = () => {
+        waveform.classList.add("playing");
+    };
+
+    // Stop animation when paused or finished
+    currentAudio.onpause = () => {
+        waveform.classList.remove("playing");
+    };
 
     currentAudio.onended = () => {
+        waveform.classList.remove("playing");
         controls.classList.remove("hidden");
     };
+
+    currentAudio.play().catch(err => {
+        console.warn("Autoplay blocked.", err);
+        if (playButton) playButton.style.display = "inline-block";
+    });
+
+    // UPDATE TRANSCRIPT
+    const transcriptBox = document.getElementById("transcriptBox");
+    transcriptBox.innerText = soundObj.text || "";
+    transcriptBox.classList.remove("hidden");
 }
 
 // -----------------------------
