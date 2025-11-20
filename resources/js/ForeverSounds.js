@@ -13,8 +13,8 @@ const waveform = document.querySelector(".waveform");
 
 
 if (!personKey || !accessMap[personKey]) {
-    alert("Person not found. Please scan a valid QR code or login first.");
-    throw new Error("Person not recognized");
+    console.log("No valid person provided. Waiting for login redirect.");
+    window.location.href = "login.html";
 }
 
 const entry = accessMap[personKey];

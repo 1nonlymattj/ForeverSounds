@@ -3,76 +3,35 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ForeverSounds</title>
-  <link rel="icon" href="resources/img/ForeverSoundsLogo.png" type="image/png"
-            sizes="16x16">
-  <link rel="stylesheet" href="resources/css/ForeverSounds.css" />
-  <style>
-    /* Additional home-page tweaks */
-    .container {
-      max-width: 600px;
-      width: 90%;
-      text-align: center;
-    }
+  <title>ForeverSounds Login</title>
+  <link rel="icon" href="resources/img/ForeverSoundsLogo.png" type="image/png" sizes="16x16">
+  <link rel="stylesheet" href="resources/css/ForeverSounds.css">
 
-    h1 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      letter-spacing: 1px;
-    }
-
-    p {
-      color: #aaa;
-      font-size: 1rem;
-      margin-bottom: 2rem;
-    }
-
-    .people-list {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-      justify-content: center;
-    }
-
-    .person-card {
-      background: #1c1c1c;
-      border-radius: 0.8rem;
-      padding: 1rem;
-      box-shadow: 0 6px 12px rgba(255, 255, 255, 0.05);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .person-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 18px rgba(255, 255, 255, 0.08);
-    }
-
-    .person-card a {
-      text-decoration: none;
-      color: #fff;
-      font-weight: 500;
-      letter-spacing: 0.5px;
-    }
-
-    footer {
-      margin-top: 3rem;
-      font-size: 0.85rem;
-      color: #666;
-    }
-  </style>
 </head>
 
 <body>
-  <div class="container">
+  <div class="login-container">
     <h1>ForeverSounds</h1>
-    <p>Explore unique soundbites from different people.</p>
+    <p>Welcome! Please choose an option below.</p>
 
-    <div class="people-list">
-  <div class="person-card">
-    <button onclick="requestAccess('JimMiller')">Jim Miller</button>
+    <div class="login-options">
+      <button class="login-btn" id="existingBtn">Existing Customer</button>
+      <button class="login-btn" id="newBtn">New Customer</button>
+    </div>
+  
 
+<!-- ⭐ PIN DIALOG ⭐ -->
+  <div id="pinDialog" title="Enter Your 4-Digit PIN" style="display:none;">
+  <div class="pin-wrapper">
+    <input class="pin-box" maxlength="1" type="password">
+    <input class="pin-box" maxlength="1" type="password">
+    <input class="pin-box" maxlength="1" type="password">
+    <input class="pin-box" maxlength="1" type="password">
   </div>
-  <!-- Add more as needed -->
+
+  <p id="pinError" style="color:#ff5555; display:none; margin-top:10px; text-align:center;">
+    Incorrect PIN. Try again.
+  </p>
 </div>
 
     <!-- START FOOTER-->
@@ -83,7 +42,7 @@
         <p class="m-0 text-center text-white">
           <span class="footer-text"> Copyright &copy; </span>
           <span class="footer-text" id="year"></span> 
-          <span class="footer-text">MJs Creations</span> 
+          <span class="footer-text">Forever Sounds</span> 
           <span class="footer-statement">All Rights Reserved</span>
         </p>
         <div id="fuzzyWebDesign" class="powered"> 
@@ -95,7 +54,7 @@
       </div>
     </div>
   </footer>
-
+</div>
     <script>document.getElementById("year").innerHTML = new Date().getFullYear();</script>
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script> 
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
@@ -104,6 +63,6 @@
     <script src="resources/js/ForeverSoundsAccess.js"></script>
     <script src="resources/js/Inquiry.js"></script>
 
-  </div>
+
 </body>
 </html>

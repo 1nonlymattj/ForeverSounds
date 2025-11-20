@@ -105,6 +105,204 @@ button:hover {
   color: #aaa;
 }
 
+.login-options {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.login-btn {
+  padding: 1rem 1.5rem;
+  font-size: 1.1rem;
+  background: #0a84ff;
+  border: none;
+  color: white;
+  border-radius: 0.6rem;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.login-btn:hover {
+  transform: translateY(-2px);
+  background: #53a9ff;
+}
+
+.cancel-btn {
+  padding: 1rem 1.5rem;
+  background: #666;
+  border: none;
+  color: white;
+  border-radius: 0.6rem;
+  cursor: pointer;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-content {
+  background: #1b1b1b;
+  padding: 2rem;
+  border-radius: 0.8rem;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.modal-input {
+  width: 100%;
+  padding: 0.8rem;
+  margin-top: 1rem;
+  border-radius: 0.5rem;
+  border: none;
+  font-size: 1rem;
+}
+.modal-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+}
+
+.login-container {
+      max-width: 500px;
+      margin: 60px auto;
+      background: #1a1a1a;
+      padding: 2rem;
+      border-radius: 1rem;
+      text-align: center;
+      box-shadow: 0 8px 16px rgba(255,255,255,0.05);
+    }
+
+.login-title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.login-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.login-btn {
+  padding: 14px 20px;
+  background: #333;
+  border-radius: 10px;
+  color: white;
+  border: none;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.login-btn:hover {
+  background: #555;
+}
+
+.fb-btn img {
+  height: 20px;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+.pin-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.pin-box {
+  width: 55px;
+  height: 55px;
+  text-align: center;
+  font-size: 2rem;
+  border-radius: 8px;
+  border: 2px solid #444;
+  background: #111;
+  color: #fff;
+}
+
+.pin-box:focus {
+  outline: none;
+  border-color: #0a84ff;
+}
+
+/* Start Dialog */
+
+@media screen and (max-width: 760px) {
+    .ui-dialog {
+        width: 90% !important;
+        /* top: -425px !important; */
+        /* left: 0 !important; */
+        height: auto !important;
+        transform: none !important;
+    }
+
+    .dialogButton {
+        width: 80% !important;
+        height: 50px !important;
+    }
+}
+
+.ui-dialog {
+    background: #6b6b6b;
+    border: 2px #000000 solid;
+    border-radius: 3px;
+    z-index: 1200 !important;
+}
+
+.ui-dialog-titlebar {
+    background: #BFBFBF;
+    text-align: center;
+    padding: .5em;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.ui-dialog-content {
+    min-height: 50px !important;
+    padding: 1em 2em;
+    font-family: sans-serif;
+    font-size: 18px;
+    color: #000000 !important;
+}
+
+.ui-dialog-buttonset {
+    display: flex;
+    justify-content: center;
+}
+
+
+.ui-widget-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #232323;
+    opacity: 0.7;
+}
+
+.ui-front {
+    z-index: 100;
+}
+/* ==== End Dialgo ==== */
 
 
 /* ===== FOOTER ===== */
