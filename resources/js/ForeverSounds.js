@@ -123,3 +123,64 @@ window.addEventListener("DOMContentLoaded", () => {
         if (playButton) playButton.style.display = "none";
     }
 });
+
+// -----------------------------
+// 9️⃣ Load obituary
+// -----------------------------
+const obituaryContainer = document.getElementById("obituarySection");
+const obituaryText = document.getElementById("obituaryText");
+
+if (entry.obituary && entry.obituary.trim() !== "") {
+    obituaryText.innerHTML = entry.obituary;
+    obituaryContainer.classList.remove("hidden");
+} else {
+    obituaryContainer.classList.add("hidden");
+}
+
+if (entry.obituary && entry.obituary.length > 0) {
+    document.getElementById("obituarySection").classList.add("heaven-clouds");
+    document.getElementById("obituarySection").classList.remove("hidden");
+} else {
+    document.getElementById("obituarySection").classList.add("hidden");
+}
+
+
+// -----------------------------
+// 🔟 Slideshow Logic
+// -----------------------------
+const slideshowContainer = document.getElementById("slideshowContainer");
+const slideshowImage = document.getElementById("slideshowImage");
+const nextSlide = document.getElementById("nextSlide");
+const prevSlide = document.getElementById("prevSlide");
+
+let slideIndex = 0;
+let gallery = [];
+
+// Only load if gallery exists AND has images
+if (entry.gallery && Array.isArray(entry.gallery) && entry.gallery.length > 0) {
+
+    // Build full URLs for slideshow
+    gallery = entry.gallery.map(img => `${personKey}/${img}`);
+
+    // Show first image
+    function updateSlide() {
+        slideshowImage.src = gallery[slideIndex];
+    }
+
+    nextSlide.addEventListener("click", () => {
+        slideIndex = (slideIndex + 1) % gallery.length;
+        updateSlide();
+    });
+
+    prevSlide.addEventListener("click", () => {
+        slideIndex = (slideIndex - 1 + gallery.length) % gallery.length;
+        updateSlide();
+    });
+
+    updateSlide();
+    slideshowContainer.classList.remove("hidden");
+
+} else {
+    slideshowContainer.classList.add("hidden");
+}
+

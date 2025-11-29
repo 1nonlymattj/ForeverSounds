@@ -1,23 +1,94 @@
 body {
-  margin: 0;
+  height: auto;
+  min-height: 100vh;
   padding: 0;
-  font-family: "Inter", sans-serif;
-  background: #0b0b0b;
-  color: #fff;
+  margin: 0;
+  overflow-x: hidden;
+  background: linear-gradient(#0b0b0b, #1a1a1a);
+}
+
+.login-container {
+  color: #eee;
+}
+
+.sound-container {
+  background: #1a1a1a;
+  color: #eee;
+  border-radius: 1rem;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 8px 16px rgba(255,255,255,0.05);
+}
+
+.section {
+  width: 50%;
+  max-width: 820px;
+  margin: 40px auto;
+  padding: 30px;
+}
+
+.obituary {
+    position: relative; /* place above clouds */
+    background: rgba(255,255,255,0.25); /* slightly more opaque for readability */
+    backdrop-filter: blur(6px); /* softer blur */
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1); /* subtle shadow */
+    color: #111; /* dark text for readability */
+    line-height: 1.7;
+    z-index: 1;
+}
+
+.slideshow {
+  color: #eee;
+  width: 100% !important; 
+}
+
+.slideshow-box {
+  position: relative;
+  width: 100%; 
+  max-width: 650px;
+  aspect-ratio: 16 / 9; /* keeps consistent crop */
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+}
+
+.slideshow-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: scale-down;
+  object-position: center;
+}
+
+.slide-btn {
+  position: absolute; /* <-- key fix */
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.22);
+  backdrop-filter: blur(6px);
+  width: 48px;
+  height: 48px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 24px;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  z-index: 2;
 }
 
-.container {
-  background: #1a1a1a;
-  padding: 2rem;
-  border-radius: 1rem;
-  box-shadow: 0 8px 16px rgba(255, 255, 255, 0.05);
-  text-align: center;
-  width: 320px;
+#prevSlide {
+  left: 10px;
 }
+
+#nextSlide {
+  right: 10px;
+}
+
+
 
 button {
   margin: 10px;
@@ -86,6 +157,45 @@ button:hover {
   0% { height: 20%; }
   50% { height: 100%; }
   100% { height: 20%; }
+}
+
+/* Soft animated Heaven Cloud background */
+.heaven-clouds {
+    position: relative;
+    left: 15%;
+    width: 75%;
+    max-width: 85%;
+    text-align: center;
+    overflow: hidden;
+    background: linear-gradient(to bottom, #f0f7ff, #ffffff); /* softer sky */
+    padding: 40px 20px; /* space around content */
+}
+
+/* Cloud layer animation */
+.heaven-clouds::before,
+.heaven-clouds::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -200%;
+    width: 400%;
+    height: 100%;
+    background-image: url("../img/clouds.png"); 
+    background-size: contain;
+    background-repeat: repeat-x;
+    opacity: 0.15; /* lighter clouds */
+    animation: cloudsMove 55s linear infinite;
+    z-index: 0;
+}
+
+.heaven-clouds::after {
+    opacity: 0.10; /* even lighter layer for depth */
+    animation-duration: 85s; /* slower for parallax effect */
+}
+
+@keyframes cloudsMove {
+    from { transform: translateX(0); }
+    to { transform: translateX(50%); }
 }
 
 

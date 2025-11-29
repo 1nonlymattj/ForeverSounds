@@ -10,29 +10,51 @@
 </head>
 <body>
   <div class="page-wrapper">
-    <div class="container">
-      <h1 id="personName"></h1>
-      <div id="transcriptBox" class="transcript-box hidden"></div>
-      <div class="waveform">
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-      </div>
-      <button id="playButton">Play a Message From Your Loved One</button>
-      <div id="controls" class="hidden">
-        <button id="replayButton">Replay</button>
-        <button id="nextButton">Play Another</button>
-      </div>
-    </div>
 
-    <footer>
+    <!-- SOUND PLAYER CONTAINER -->
+    <section class="section sound-section">
+      <div class="container sound-container">
+        <h1 id="personName"></h1>
+
+        <div id="transcriptBox" class="transcript-box hidden"></div>
+
+        <div class="waveform">
+          <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+          <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+        </div>
+
+        <button id="playButton">Play a Message From Your Loved One</button>
+
+        <div id="controls" class="hidden">
+          <button id="replayButton">Replay</button>
+          <button id="nextButton">Play Another</button>
+        </div>
+      </div>
+    </section>
+
+   <!-- OBITUARY SECTION -->
+    <section id="obituarySection" class="heaven-clouds hidden">
+      <div class="obituary">
+        <h2>Obituary</h2>
+        <p id="obituaryText"></p>
+      </div>
+    </section>
+
+
+    <!-- SLIDESHOW SECTION -->
+    <section id="slideshowContainer" class="section slideshow hidden">
+
+      <div class="slideshow-box">
+        <h2>Photo Memories</h2>
+        <button id="prevSlide" class="slide-btn">&#10094;</button>
+        <img id="slideshowImage" src="" alt="Memory Image">
+        <button id="nextSlide" class="slide-btn">&#10095;</button>
+      </div>
+
+    </section>
+
+    <!-- FOOTER -->
+     <footer>
       <div class="footer" align="center">
         <div class="text-center p-1">
           <p class="m-0 text-center text-white">
@@ -50,7 +72,9 @@
         </div>
       </div>
     </footer>
+
   </div>
+</body>
 
     <script>document.getElementById("year").innerHTML = new Date().getFullYear();</script>
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script> 
