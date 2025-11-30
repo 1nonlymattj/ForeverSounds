@@ -30,7 +30,7 @@ body {
 .obituary {
     position: relative; /* place above clouds */
     background: rgba(255,255,255,0.25); /* slightly more opaque for readability */
-    backdrop-filter: blur(6px); /* softer blur */
+    /* backdrop-filter: blur(6px); */
     padding: 30px;
     border-radius: 16px;
     box-shadow: 0 8px 20px rgba(0,0,0,0.1); /* subtle shadow */

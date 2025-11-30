@@ -8,10 +8,22 @@ let currentAudio;
 // 1️⃣ Get the personKey from the URL
 // -----------------------------
 const urlParams = new URLSearchParams(window.location.search);
-const personKey = urlParams.get("person");
+const rawKey = urlParams.get("person");
 const waveform = document.querySelector(".waveform");
 
+// -----------------------------
+// Resolve alias → real key
+// -----------------------------
+function resolvePerson(key) {
+    if (accessMap[key]?.alias) {
+        return accessMap[key].alias;
+    }
+    return key;
+}
 
+const personKey = resolvePerson(rawKey);
+
+// Validate
 if (!personKey || !accessMap[personKey]) {
     console.log("No valid person provided. Waiting for login redirect.");
     window.location.href = "login.html";

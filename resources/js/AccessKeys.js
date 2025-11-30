@@ -1,7 +1,7 @@
 // AccessKeys.js
 const accessMap = {
     "JimMiller": {
-        password: "2860",
+        password: ["2860", "0724"],
         displayName: "Jim Miller",
         obituary:`
         James Jay Miller
@@ -48,6 +48,7 @@ const accessMap = {
         ],
         bucket: "http://foreversounds.s3-website-us-east-1.amazonaws.com/JimMiller/"
     },
+    "Dad": { alias: "JimMiller", password: "1059" },
     "ChrisMiller": {
         password: "1118",
         displayName: "Chris Miller",
@@ -85,6 +86,7 @@ const accessMap = {
             { file: "Hey_BabyGirl.mp3", text: "Hey Baby Girl" }
         ],
         bucket: "http://foreversounds.s3-website-us-east-1.amazonaws.com/TomBodnar1/"
-    }
+    },
+    "TomBodnar2": { alias: "TomBodnar1", password: "9801" }
     // Add more people here
 };

@@ -59,15 +59,24 @@ $(document).on("keyup", ".pin-box", function () {
         let matchedPersonKey = null;
 
         for (const key in accessMap) {
-            if (accessMap[key].password === digits) {
+            const entry = accessMap[key];
+
+            // Convert a single password or an array into an array
+            const validPins = Array.isArray(entry.password)
+                ? entry.password
+                : [entry.password];
+
+            if (validPins.includes(digits)) {
                 matchedPersonKey = key;
                 break;
             }
         }
 
+        // If matched, convert alias → main person key
         if (matchedPersonKey) {
+            const resolvedKey = resolvePerson(matchedPersonKey);
             $("#pinDialog").dialog("close");
-            window.location.href = `index.html?person=${matchedPersonKey}`;
+            window.location.href = `index.html?person=${resolvedKey}`;
         } else {
             $("#pinError").show();
             $("#pinDialog").parent().effect("shake");
@@ -76,3 +85,13 @@ $(document).on("keyup", ".pin-box", function () {
         }
     }
 });
+
+// -----------------------------
+// Checks for Alias
+// -----------------------------
+function resolvePerson(key) {
+    if (accessMap[key]?.alias) {
+        return accessMap[key].alias;  // return actual person key
+    }
+    return key;
+}
