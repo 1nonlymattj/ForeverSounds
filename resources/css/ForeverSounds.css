@@ -21,10 +21,16 @@ body {
 }
 
 .section {
-  width: 50%;
-  max-width: 820px;
+  width: 75%;
+  max-width: 85%;
   margin: 40px auto;
   padding: 30px;
+}
+
+#obituarySection {
+  left: 9%;
+  width: 75%;
+  max-width: 85%;
 }
 
 .obituary {
@@ -87,8 +93,6 @@ body {
 #nextSlide {
   right: 10px;
 }
-
-
 
 button {
   margin: 10px;
@@ -180,8 +184,8 @@ button:hover {
     left: -200%;
     width: 400%;
     height: 100%;
-    background-image: url("../img/clouds.png"); 
-    background-size: contain;
+    background-image: url("../img/HeavenSteps.png"); 
+    background-size: cover;
     background-repeat: repeat-x;
     opacity: 0.15; /* lighter clouds */
     animation: cloudsMove 55s linear infinite;

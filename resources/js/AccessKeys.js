@@ -46,9 +46,9 @@ const accessMap = {
             { file: "Suck_it.mp3", text: "Tell him to Suck IT!"},
             { file: "What_You_Doin_Girl.mp3", text: "What You Doin Girl" }
         ],
-        bucket: "http://foreversounds.s3-website-us-east-1.amazonaws.com/JimMiller/"
+        bucket: "https://foreversounds.mattj5609.workers.dev/JimMiller/"
     },
-    "Dad": { alias: "JimMiller", password: "1059" },
+    "DadJM": { alias: "JimMiller", password: "1059" },
     "ChrisMiller": {
         password: "1118",
         displayName: "Chris Miller",
@@ -77,7 +77,7 @@ const accessMap = {
             { file: "I_Love_You.mp3", text: "I Love You" },
             { file: "Shut_Up.mp3", text: "Shut Up" }
         ],
-        bucket: "http://foreversounds.s3-website-us-east-1.amazonaws.com/ChrisMiller/"
+        bucket: "https://foreversounds.mattj5609.workers.dev/ChrisMiller/"
     },
     "TomBodnar1": {
         password: "1212",
@@ -85,7 +85,7 @@ const accessMap = {
         sounds: [
             { file: "Hey_BabyGirl.mp3", text: "Hey Baby Girl" }
         ],
-        bucket: "http://foreversounds.s3-website-us-east-1.amazonaws.com/TomBodnar1/"
+        bucket: "https://foreversounds.mattj5609.workers.dev/TomBodnar1/"
     },
     "TomBodnar2": { alias: "TomBodnar1", password: "9801" }
     // Add more people here
