@@ -46,7 +46,7 @@ const accessMap = {
             { file: "Suck_it.mp3", text: "Tell him to Suck IT!"},
             { file: "What_You_Doin_Girl.mp3", text: "What You Doin Girl" }
         ],
-        bucket: "/JimMiller/"
+        bucket: "/JimMiller//"
     },
     "DadJM": { alias: "JimMiller", password: "1059" },
     "ChrisMiller": {
@@ -77,7 +77,7 @@ const accessMap = {
             { file: "I_Love_You.mp3", text: "I Love You" },
             { file: "Shut_Up.mp3", text: "Shut Up" }
         ],
-        bucket: "/ChrisMiller/"
+        bucket: "/ChrisMiller//"
     },
     "TomBodnar1": {
         password: "1212",
@@ -85,7 +85,7 @@ const accessMap = {
         sounds: [
             { file: "Hey_BabyGirl.mp3", text: "Hey Baby Girl" }
         ],
-        bucket: "/TomBodnar1/"
+        bucket: "/TomBodnar1//"
     },
     "TomBodnar2": { alias: "TomBodnar1", password: "9801" }
     // Add more people here
